@@ -2,7 +2,6 @@
 {
     using System.Web.Http.Dependencies;
     using Ninject;
-    using IDependencyResolver = System.Web.Mvc.IDependencyResolver;
 
     public class NinjectResolver: NinjectScope, IDependencyResolver
     {

@@ -12,7 +12,9 @@ namespace AirlinesDemo.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
-    
+    using Repositories;
+    using Services;
+
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -63,11 +65,22 @@ namespace AirlinesDemo.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(x => x
-                .FromThisAssembly()
-                .IncludingNonePublicTypes()
-                .SelectAllClasses()
-                .BindDefaultInterface());
-        }        
-    }
+            kernel.Bind(x =>
+                {
+                    x
+                        .FromAssemblyContaining<FlightService>()
+                        .SelectAllClasses()
+                        .Join.FromAssembliesInPath(".") 
+                        .SelectAllClasses()
+                        .BindAllInterfaces();
+
+                    x
+                        .FromAssemblyContaining<FlightRepository>()
+                        .SelectAllClasses()
+                        .Join.FromAssembliesInPath(".")
+                        .SelectAllClasses()
+                        .BindAllInterfaces();
+                });
+        }
+    }        
 }

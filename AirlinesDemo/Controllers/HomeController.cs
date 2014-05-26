@@ -1,11 +1,16 @@
 ﻿namespace AirlinesDemo.Controllers
 {
     using System.Web.Mvc;
+    using Services.Interfaces;
 
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
+        private readonly IFlightService _flightService;
+
+        public HomeController(IFlightService flightService)
+        {
+            _flightService = flightService;
+        }
 
         public ActionResult Index()
         {

@@ -27,6 +27,7 @@
         private void InitializeMappings()
         {
             Mapper.CreateMap<Flight, DBEntities.Flight>();
+            Mapper.CreateMap<DBEntities.Flight, Flight>();
         }
     }
 }
