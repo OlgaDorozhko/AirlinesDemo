@@ -7,11 +7,11 @@
 
     public class FlightRepository: IFlightRepository
     {
-        private EFDbContext context;
+        private FlightsContext context;
 
         public FlightRepository()
         {
-            context = new EFDbContext();
+            context = new FlightsContext();
         }
 
         public List<Flight> GetAll()
