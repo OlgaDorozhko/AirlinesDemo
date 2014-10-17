@@ -6,5 +6,7 @@
     public interface IFlightService
     {
         List<Flight> GetAll();
+
+        void Update(Flight flight);
     }
 }

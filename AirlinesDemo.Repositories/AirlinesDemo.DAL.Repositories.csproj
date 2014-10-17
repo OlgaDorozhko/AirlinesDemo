@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4CF5C18B-AAC4-4332-95A9-B8762109057E}</ProjectGuid>
+    <ProjectGuid>{64838CDF-3491-4282-B1CB-30F0C440EBF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AirlinesDemo.Repositories.Entities</RootNamespace>
-    <AssemblyName>AirlinesDemo.Repositories.Entities</AssemblyName>
+    <RootNamespace>AirlinesDemo.Repositories</RootNamespace>
+    <AssemblyName>AirlinesDemo.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,11 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseContext.cs" />
-    <Compile Include="BaseEntity.cs" />
-    <Compile Include="Flight.cs" />
-    <Compile Include="FlightsContext.cs" />
+    <Compile Include="CustomerRepository.cs" />
+    <Compile Include="FlightRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AirlinesDemo.Repositories.Entities\AirlinesDemo.Repositories.Entities.csproj">
+      <Project>{4cf5c18b-aac4-4332-95a9-b8762109057e}</Project>
+      <Name>AirlinesDemo.Repositories.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirlinesDemo.Repositories.Interfaces\AirlinesDemo.Repositories.Interfaces.csproj">
+      <Project>{419d4cc3-fd07-4bbb-927a-15b3b127d292}</Project>
+      <Name>AirlinesDemo.Repositories.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

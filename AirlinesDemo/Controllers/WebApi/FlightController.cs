@@ -30,5 +30,9 @@
 
             return string.Empty;
         }
+        
+        public void Update(Flight flight)
+        {
+        }
     }
 }

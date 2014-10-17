@@ -1,7 +1,7 @@
 ﻿namespace AirlinesDemo.Repositories
 {
-    using System.Collections.Generic;
     using System.Linq;
+    using DAL;
     using Entities;
     using Interfaces;
 
@@ -9,14 +9,36 @@
     {
         private FlightsContext context;
 
-        public FlightRepository()
+        public FlightRepository(IUnitOfWork unitOfWork)
         {
-            context = new FlightsContext();
+            context = unitOfWork.Context;
         }
 
-        public List<Flight> GetAll()
+        public Flight Get(int id)
         {
-            return context.Flights.ToList();
+            return context.Flights.Find(id);
+        }
+
+        public IQueryable<Flight> GetAll()
+        {
+            return context.Flights;
+        }
+
+        public void Add(Flight flight)
+        {
+            context.Flights.Add(flight);
+        }
+        
+        public void Update(Flight flight)
+        {
+            context.Flights.Add(flight);
+            context.Entry(flight).State = StateHelper.ConvertState(flight.State);
+        }
+        
+        public void Delete(int id)
+        {
+            var flight = context.Flights.Find(id);
+            context.Flights.Remove(flight);
         }
     }
 }

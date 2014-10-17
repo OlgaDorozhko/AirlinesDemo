@@ -2,7 +2,7 @@
 {
     using Entities;
 
-    public interface IFlightRepository : IEntityRepository<Flight>
+    public interface ICustomerRepository : IEntityRepository<Customer>
     {
     }
 }
